@@ -14,8 +14,9 @@ module.exports = cds.service.impl((srv) => {
                 }
             });
         }
-        
+
         console.log("res: ", res);
+        
         console.log("Milestone Updated");
 
     });
