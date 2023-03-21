@@ -1,0 +1,72 @@
+### creating all the details using many to many association
+
+### Read Metadata 
+
+GET http://localhost:4004/catalog/$metadata
+
+### Read Employee
+
+GET http://localhost:4004/catalog/Employee
+
+### Create
+
+POST http://localhost:4004/catalog/Employee HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "Fname"     : "Abhijeet_",
+    "Lname"     : "Ranjan",
+    "EmpGender" : "M",
+    "EmpEmail"  : "abranjan@deloitte.com",
+    "EmpSalary" : 2000.5,
+    "Currency_code" : "INR",
+    "EmpRating" : 4,
+    "city_ID"   : 401,
+    "task"      : [
+        {
+            "Id"        : 14,
+            "Status"    : "WIP",
+            "Desc"      : "Working on Deep Insert"
+        },
+        {
+            "Id"        : 15,
+            "Status"    : "Complted",
+            "Desc"      : "Working with Hana Cloud"
+        }
+    ]
+}
+
+### Read Employee along with association
+
+GET http://localhost:4004/catalog/Employee?$expand=task
+
+### Deep Read Employee along with association
+
+GET http://localhost:4004/catalog/Employee/1510a94e-fbe6-4c3b-a53f-9a5650b8e4b8?$expand=task
+
+
+### Hike salary of the employee
+
+POST http://localhost:4004/catalog/hikeSalary
+Content-Type: application/json
+
+{
+    "employee"  : "1510a94e-fbe6-4c3b-a53f-9a5650b8e4b8",
+    "amount"    : 1000.12
+}
+
+
+### Update the currency in Employee table
+
+PATCH http://localhost:4004/catalog/Employee/1510a94e-fbe6-4c3b-a53f-9a5650b8e4b8
+Content-Type: application/json
+
+{
+    "EmpSalary"       : 2000,
+    "Currency_code"   : "INR"
+}
+
+
+### Calling unBoundedFunc()
+
+GET http://localhost:4004/catalog/unBoundedFunc()
