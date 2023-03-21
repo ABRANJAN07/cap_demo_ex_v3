@@ -14,7 +14,7 @@ POST http://localhost:4004/catalog/Employee HTTP/1.1
 Content-Type: application/json
 
 { 
-    "Fname"     : "Abhijeet_",
+    "Fname"     : "AbhijeetR5",
     "Lname"     : "Ranjan",
     "EmpGender" : "M",
     "EmpEmail"  : "abranjan@deloitte.com",
@@ -24,12 +24,12 @@ Content-Type: application/json
     "city_ID"   : 401,
     "task"      : [
         {
-            "Id"        : 14,
+            "Id"        : 17,
             "Status"    : "WIP",
             "Desc"      : "Working on Deep Insert"
         },
         {
-            "Id"        : 15,
+            "Id"        : 18,
             "Status"    : "Complted",
             "Desc"      : "Working with Hana Cloud"
         }
@@ -70,3 +70,8 @@ Content-Type: application/json
 ### Calling unBoundedFunc()
 
 GET http://localhost:4004/catalog/unBoundedFunc()
+
+
+### Deep Read Employee along with association
+
+GET http://localhost:4004/catalog/Employee/1510a94e-fbe6-4c3b-a53f-9a5650b8e4b8

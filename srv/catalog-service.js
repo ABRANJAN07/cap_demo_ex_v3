@@ -6,15 +6,18 @@ module.exports = cds.service.impl((srv) => {
 
     srv.after('READ', "Employee", async res => {
 
-        res.forEach(async element => {
-            if (element.EmpRating >= 3) {
-                console.log("Data: ", element.EmpRating);
-                element.Milestone = "Yes_Test";
-            }
-        });
+        if (Array.isArray(res)) {
+            res.forEach(async element => {
+                if (element.EmpRating >= 3) {
+                    console.log("Data: ", element.EmpRating);
+                    element.Milestone = "Yes_Test";
+                }
+            });
+        }
+        
         console.log("res: ", res);
         console.log("Milestone Updated");
-        
+
     });
 
     srv.on("unBoundedFunc", async req => {
